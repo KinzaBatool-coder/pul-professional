@@ -1,10 +1,18 @@
+
 # Core (required)
 fastapi>=0.110
 uvicorn[standard]>=0.29
 python-multipart>=0.0.9
 python-dotenv>=1.0
-faster-whisper>=1.0        # speech-to-text
-edge-tts>=6.1              # neural AI voices (primary TTS)
-gTTS>=2.5                  # backup TTS if Edge voices are unreachable
+
+# Speech-to-text
+faster-whisper>=1.0
+
+# Text-to-speech
+edge-tts>=6.1
+gTTS>=2.5
+
+# Gemini AI translation
 google-genai
+
   

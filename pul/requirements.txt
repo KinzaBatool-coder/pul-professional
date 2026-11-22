@@ -6,5 +6,5 @@ python-dotenv>=1.0
 faster-whisper>=1.0        # speech-to-text
 edge-tts>=6.1              # neural AI voices (primary TTS)
 gTTS>=2.5                  # backup TTS if Edge voices are unreachable
-anthropic>=0.40            # high-quality translation (English / Urdu / Saraiki)
+google-genai
   

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pul – AI Voice Translator</title>
+  <meta name="description" content="Translate and speak English, Urdu and Saraiki with AI voice.">
+  <link rel="icon" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;600&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><img src="logo.svg" width="36" height="36" alt=""><span>Pul <small>پُل</small></span></a>
+    <span class="pill" id="status" title="Translation engine">connecting…</span>
+  </header>
+
+  <main class="container">
+    <h1 class="title">Speak. Translate. Hear it.</h1>
+    <p class="lead">English · اردو · سرائیکی — type or talk, and get the translation as text and AI voice.</p>
+
+    <section class="langbar" aria-label="Languages">
+      <select id="src" aria-label="Translate from"></select>
+      <button class="icon-btn" id="swap" title="Swap languages" aria-label="Swap languages">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h12l-4-4M17 17H5l4 4"/></svg>
+      </button>
+      <select id="dst" aria-label="Translate to"></select>
+    </section>
+
+    <section class="panels">
+      <article class="panel" id="inPanel">
+        <textarea id="input" placeholder="Type here or press the microphone…" maxlength="3000" aria-label="Text to translate"></textarea>
+        <footer class="panel-foot">
+          <button class="mic" id="mic" aria-label="Record voice" title="Record voice">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+          </button>
+          <span class="hint" id="micHint">Tap to speak</span>
+          <span class="spacer"></span>
+          <span class="count" id="count">0 / 3000</span>
+          <button class="ghost" id="clear">Clear</button>
+        </footer>
+      </article>
+
+      <article class="panel out" id="outPanel">
+        <div class="result" id="output" aria-live="polite"><span class="placeholder">Translation appears here</span></div>
+        <footer class="panel-foot">
+          <button class="ghost" id="play" disabled>▶ Play voice</button>
+          <button class="ghost" id="copy" disabled>Copy</button>
+          <span class="spacer"></span>
+          <span class="hint" id="engine"></span>
+        </footer>
+      </article>
+    </section>
+
+    <section class="controls">
+      <button class="primary" id="go">Translate</button>
+      <label class="check"><input type="checkbox" id="autoSpeak" checked> Speak translation</label>
+      <label class="check"><input type="checkbox" id="autoStop" checked> Auto-stop mic on silence</label>
+      <label class="field">Voice
+        <select id="gender"><option value="f">Female</option><option value="m">Male</option></select>
+      </label>
+      <label class="field">Speed
+        <input type="range" id="rate" min="-30" max="30" step="10" value="0">
+      </label>
+    </section>
+
+    <div class="notice" id="notice" hidden></div>
+    <audio id="player" preload="auto"></audio>
+
+    <section class="history">
+      <div class="history-head"><h2>History</h2><button class="ghost" id="clearHistory">Clear history</button></div>
+      <ul id="history"></ul>
+      <p class="empty" id="emptyHistory">Nothing yet — your translations will be listed here.</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

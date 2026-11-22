@@ -1,3 +1,5 @@
+
+ 
 """Central configuration. Values come from environment variables or a .env file."""
 import os
 import tempfile
@@ -24,9 +26,10 @@ class Settings:
     whisper_device: str = os.getenv("WHISPER_DEVICE", "auto")
     whisper_compute: str = os.getenv("WHISPER_COMPUTE", "auto")
 
-    translator: str = os.getenv("TRANSLATOR", "auto").lower()   # auto | llm | nllb
-    anthropic_api_key: str = os.getenv("ANTHROPIC_API_KEY", "")
-    anthropic_model: str = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5")
+    translator: str = os.getenv("TRANSLATOR", "auto").lower()
+    gemini_api_key: str = os.getenv("GEMINI_API_KEY", "")
+    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+
     nllb_model: str = os.getenv("NLLB_MODEL", "facebook/nllb-200-distilled-600M")
 
     audio_dir: Path = Path(tempfile.gettempdir()) / "pul_audio"
@@ -38,3 +41,4 @@ class Settings:
 
 settings = Settings()
 settings.audio_dir.mkdir(parents=True, exist_ok=True)
+
